@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latihan JavaScript</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #eff6ff;
+  margin: 0;
+  padding: 20px;
+  color: #1e293b;
+}
+main {
+  max-width: 650px;
+  margin: auto;
+}
+section {
+  background: white;
+  padding: 18px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+}
+h1, h2 { color: #2563eb; }
+button, input {
+  padding: 10px;
+  margin: 5px 0;
+}
+button {
+  background: #2563eb;
+  color: white;
+  border: 0;
+  border-radius: 6px;
+}
+</style>
+</head>
+<body>
+<main>
+<section>
+<h1>Latihan JavaScript</h1>
+<p>Praktik dasar pemrograman JavaScript.</p>
+<p>Nama: Isi nama kamu</p>
+</section>
+
+<section>
+<h2>1. Variabel</h2>
+<p id="variabel"></p>
+</section>
+
+<section>
+<h2>2. Operator</h2>
+<p id="operator"></p>
+</section>
+
+<section>
+<h2>3. Percabangan If Else</h2>
+<input id="nilai" type="number" placeholder="Masukkan nilai">
+<button onclick="cekNilai()">Cek Nilai</button>
+<p id="hasil"></p>
+</section>
+
+<section>
+<h2>4. Perulangan For</h2>
+<button onclick="ulang()">Tampilkan angka</button>
+<p id="angka"></p>
+</section>
+
+<section>
+<h2>5. Function dan Array</h2>
+<button onclick="tampilBuah()">Tampilkan buah</button>
+<p id="buah"></p>
+</section>
+
+<section>
+<h2>6. Kalkulator</h2>
+<input id="a" type="number" placeholder="Angka pertama">
+<input id="b" type="number" placeholder="Angka kedua">
+<br>
+<button onclick="hitung('+')">+</button>
+<button onclick="hitung('-')">-</button>
+<button onclick="hitung('*')">×</button>
+<button onclick="hitung('/')">÷</button>
+<p id="hasilKalkulator"></p>
+</section>
+
+<script>
+let nama = "JavaScript";
+const jumlah = 6;
+document.getElementById("variabel").textContent =
+  "Materi: " + nama + ", jumlah bagian: " + jumlah;
+
+let x = 10;
+let y = 5;
+document.getElementById("operator").textContent =
+  "10 + 5 = " + (x + y) +
+  ", 10 × 5 = " + (x * y);
+
+function cekNilai() {
+  let n = Number(document.getElementById("nilai").value);
+  let hasil = document.getElementById("hasil");
+  if (document.getElementById("nilai").value === "" ||
+      n < 0 || n > 100) {
+    hasil.textContent = "Masukkan nilai 0 sampai 100.";
+  } else if (n >= 75) {
+    hasil.textContent = "Lulus!";
+  } else {
+    hasil.textContent = "Belajar lebih giat lagi.";
+  }
+}
+
+function ulang() {
+  let teks = "";
+  for (let i = 1; i <= 10; i++) {
+    teks += i + " ";
+  }
+  document.getElementById("angka").textContent = teks;
+}
+
+const daftarBuah = ["Apel", "Jeruk", "Mangga", "Pisang"];
+function tampilBuah() {
+  document.getElementById("buah").textContent =
+    daftarBuah.join(", ");
+}
+
+function hitung(operator) {
+  let a = document.getElementById("a").value;
+  let b = document.getElementById("b").value;
+  let hasil = document.getElementById("hasilKalkulator");
+
+  if (a === "" || b === "") {
+    hasil.textContent = "Isi kedua angka terlebih dahulu.";
+    return;
+  }
+
+  a = Number(a);
+  b = Number(b);
+
+  if (operator === "+") hasil.textContent = a + b;
+  else if (operator === "-") hasil.textContent = a - b;
+  else if (operator === "*") hasil.textContent = a * b;
+  else if (b === 0) hasil.textContent = "Tidak bisa dibagi nol.";
+  else hasil.textContent = a / b;
+}
+</script>
+</main>
+</body>
+</html>
